@@ -4,8 +4,8 @@
 To interface an LED with the 8051 microcontroller and control its operation.
 
 ## Apparatus Required:
-•	Laptop with Keil uVision software
-•	Proteus Design Suite
+•	Laptop with Keil uVision software  
+•	Proteus Design Suite  
 
 ## Circuit Diagram Setup in Proteus:
 1.	Open Proteus and create a new project.
@@ -28,10 +28,35 @@ o	Ground (GND) connection
 
 
 ## Program:
+```
+#include <reg51.h>
+
+void main()
+{
+    unsigned char x, y;
+    unsigned int i;
+
+    P1 = 0x00;
+
+    while(1)
+    {
+        x = 0x01;
+
+        for(y = 0; y < 8; y++)
+        {
+            P1 = x;
+
+            for(i = 0; i < 60000; i++);   // delay
+
+            x = x << 1;
+        }
+    }
+}
+```
 
 ## Output:
 
 
+
 ## Result:
 The LED interfacing with the 8051 microcontroller has been successfully implemented and simulated using Keil and Proteus.
-
